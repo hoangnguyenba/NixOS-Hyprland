@@ -50,15 +50,18 @@ in
   ]; 
 
   # Add Zen Browser desktop entry
-  environment.etc."xdg/applications/zen-browser.desktop" = {
+  environment.etc."applications/zen-browser.desktop" = {
     text = ''
       [Desktop Entry]
+      Version=1.0
+      Type=Application
       Name=Zen Browser
-      GenericName=Zen
+      GenericName=Web Browser
+      Comment=Zen Browser
       Exec=appimage-run ${zenBrowserAppImage}
       Terminal=false
-      Type=Application
       Categories=Network;WebBrowser;
+      Keywords=web;browser;internet;
     '';
     mode = "0644";
   };
