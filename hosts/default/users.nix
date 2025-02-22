@@ -1,10 +1,14 @@
 # 💫 https://github.com/JaKooLit 💫 #
 # Users - NOTE: Packages defined on this will be on current user only
 
-{ pkgs, username, ... }:
+{ pkgs, username, lib, ... }:
 
 let
   inherit (import ./variables.nix) gitUsername;
+  zenBrowserAppImage = builtins.fetchurl {
+    url = "https://github.com/zen-browser/desktop/releases/latest/download/zen-x86_64.AppImage";
+    sha256 = "16k37ngl4qpqwwj6f9q8jpn20pk8887q8zc0l7qivshmhfib36qq";
+  };
 in
 {
   users = { 
@@ -42,34 +46,45 @@ in
     zoxide
     eza
     yazi
+    appimage-run
   ]; 
+
+  # Add Zen Browser desktop entry
+  environment.etc."xdg/applications/zen-browser.desktop" = {
+    text = ''
+      [Desktop Entry]
+      Name=Zen Browser
+      GenericName=Zen
+      Exec=appimage-run ${zenBrowserAppImage}
+      Terminal=false
+      Type=Application
+      Categories=Network;WebBrowser;
+    '';
+    mode = "0644";
+  };
     
   programs = {
-  # Zsh configuration
-	  zsh = {
-    	enable = true;
-	  	enableCompletion = true;
+    # Zsh configuration remains the same...
+    zsh = {
+      enable = true;
+      enableCompletion = true;
       ohMyZsh = {
         enable = true;
         plugins = ["git"];
         theme = "funky"; 
-      	};
+      };
       
       autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
       
       promptInit = ''
         fastfetch -c $HOME/.config/fastfetch/config-compact.jsonc
-        
-        #pokemon colorscripts like. Make sure to install krabby package
-        #krabby random --no-mega --no-gmax --no-regional --no-title -s; 
-        
         source <(fzf --zsh);
         HISTFILE=~/.zsh_history;
         HISTSIZE=10000;
         SAVEHIST=10000;
         setopt appendhistory;
-        '';
-      };
-   };
+      '';
+    };
+  };
 }
