@@ -47,6 +47,7 @@ in
     eza
     yazi
     appimage-run
+    bottles
   ]; 
 
   # Add Zen Browser desktop entry
@@ -89,5 +90,8 @@ in
         setopt appendhistory;
       '';
     };
+
   };
+
+  users.groups.libvirtd.members = ["${username}"];  
 }

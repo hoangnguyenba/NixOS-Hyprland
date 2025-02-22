@@ -131,7 +131,7 @@
 		  tumbler
   	  ];
 	
-    virt-manager.enable = false;
+    virt-manager.enable = true;
     
     #steam = {
     #  enable = true;

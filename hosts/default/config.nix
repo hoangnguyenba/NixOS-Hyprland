@@ -318,7 +318,8 @@
   };
 
   # Virtualization / Containers
-  virtualisation.libvirtd.enable = false;
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
   virtualisation.podman = {
     enable = false;
     dockerCompat = false;
