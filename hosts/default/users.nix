@@ -49,6 +49,7 @@ in
     appimage-run
     bottles
     code-cursor
+    quickemu
   ]; 
 
   # Add Zen Browser desktop entry
