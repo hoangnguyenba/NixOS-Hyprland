@@ -48,6 +48,7 @@ in
     yazi
     appimage-run
     bottles
+    code-cursor
   ]; 
 
   # Add Zen Browser desktop entry
