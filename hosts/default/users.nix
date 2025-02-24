@@ -50,24 +50,26 @@ in
     bottles
     code-cursor
     quickemu
+    # slack
+    # darlings (macOS apps)
   ]; 
 
   # Add Zen Browser desktop entry
-  environment.etc."applications/zen-browser.desktop" = {
-    text = ''
-      [Desktop Entry]
-      Version=1.0
-      Type=Application
-      Name=Zen Browser
-      GenericName=Web Browser
-      Comment=Zen Browser
-      Exec=appimage-run ${zenBrowserAppImage}
-      Terminal=false
-      Categories=Network;WebBrowser;
-      Keywords=web;browser;internet;
-    '';
-    mode = "0644";
-  };
+  # environment.etc."applications/zen-browser.desktop" = {
+  #   text = ''
+  #     [Desktop Entry]
+  #     Version=1.0
+  #     Type=Application
+  #     Name=Zen Browser
+  #     GenericName=Web Browser
+  #     Comment=Zen Browser
+  #     Exec=appimage-run ${zenBrowserAppImage}
+  #     Terminal=false
+  #     Categories=Network;WebBrowser;
+  #     Keywords=web;browser;internet;
+  #   '';
+  #   mode = "0644";
+  # };
     
   programs = {
     # Zsh configuration remains the same...
